@@ -40,7 +40,7 @@ html, body
 
 *::-webkit-scrollbar 
 {
-    height: 1em;
+    height: 0em;
 }
   
 *::-webkit-scrollbar-track 

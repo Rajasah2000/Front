@@ -1,7 +1,8 @@
 import './App.css';
 import { useEffect, useLayoutEffect } from 'react';
 import axios from "axios"
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useLocation} from 'react-router-dom'
+
 import { 
   Navbar, 
   Toast,
@@ -18,17 +19,24 @@ import {
   useCart
 } from "./index"
 
-function App() {
+const App = ()=> {
 
   const { userLoggedIn } = useUserLogin()
   const { dispatchUserWishlist } = useWishlist()
-  const { dispatchUserCart } = useCart()
+  const { dispatchUserCart } = useCart();
+  // const location = useLocation();
+
+//   useEffect(() => {
+//     if(location?.pathname === "/login"){
+// alert("hii")
+//     }
+//   },[location])
 
 
   return (
     <Router>
       <div className="App">
-        <Navbar/>
+       <Navbar/>
         <Routes>
           <Route path="/"         exact element={<Home/>} />
           <Route path="/shop"     exact element={<Shop/>} />
