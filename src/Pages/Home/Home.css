@@ -25,6 +25,13 @@
 {
     margin-top: 4rem;
     margin-bottom: 0;
+    border-radius: 5px;
+    font-size: 20px;
+    /* Serif font */
+font-family: Georgia, 'Times New Roman', Times, serif;
+
+/* Sans-serif font */
+font-family: Helvetica, Arial, sans-serif;
     background-color: var(--pure-white);
 }
 
