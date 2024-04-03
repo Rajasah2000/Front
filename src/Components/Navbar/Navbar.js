@@ -69,7 +69,7 @@ function Navbar() {
       <div className="left-topbar-container">
         {/* <button id="top-bar-ham-menu-btn" className="icon-btn"><i className="fa fa-bars" aria-hidden="true"></i></button> */}
         <Link to="/">
-          <h2 className="top-bar-brand-name">OnlineShop</h2>
+          <h2 className="top-bar-brand-name" style={{ fontSize:"3rem"}}>𝐑𝐔𝐙𝐀𝐍</h2>
         </Link>
         {/* {
                     location.pathname==="/shop" && 
