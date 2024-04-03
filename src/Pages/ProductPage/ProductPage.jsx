@@ -5,6 +5,7 @@ import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom"
 import { useParams } from "react-router-dom";
 import { useToast, useWishlist, useCart } from "../../index"
+import ReactImageMagnify from "react-image-magnify";
 
 function ProductPage()
 {
@@ -148,55 +149,69 @@ function ProductPage()
     }
 
     return (
+      <>
         <div className="product-page-container">
-            <div className="product-page-item">
-                <img className="bookcover-image" src={imgSrc} alt={imgAlt}></img>
-                <div className="item-details">
-                    <h2>{bookName}</h2>
-                    <hr></hr>
-                    <p><b>Author : </b> &nbsp;&nbsp; <span>{author}</span> </p>
-                    <p className="item-description"><b>Description : </b> &nbsp;&nbsp; <span>{description}</span> </p>
-                    <p className="item-rating"><b>Rating : </b> &nbsp;&nbsp; <span>{rating}</span> </p>
-                    <h3 className="item-price-details">Rs. {discountedPrice} &nbsp;&nbsp;<del>Rs. {originalPrice}</del> &nbsp;&nbsp;
-                        <span className="discount-on-item">({discountPercent}% off)</span>
-                    </h3>
-                    {
-                        outOfStock === true && (
-                            <p className="out-of-stock-text">Item is currently out of stock</p>
-                        )
-                    }
-                    {
-                        outOfStock === true 
-                        ? (
-                            <div className="item-buttons">
-                                <button className="item-notify-me-btn solid-primary-btn">Notify Me</button>
-                            </div>
-                        )
-                        : (
-                            <div className="item-buttons">
-                                <button
-                                    onClick={(event)=>{
-                                        event.preventDefault();
-                                        addItemToWishlist()
-                                    }}  
-                                    className="solid-primary-btn">
-                                        Add to wishlist
-                                </button>
-                                <button 
-                                    onClick={()=>{
-                                        addItemToCart()
-                                    }}
-                                    className="solid-warning-btn">
-                                        Add to cart
-                                </button>
-                            </div>
-                        )
-                    }
-                    
+          <div className="product-page-item">
+            <ReactImageMagnify
+              {...{
+                smallImage: {
+                  alt: imgAlt,
+                  // src: 'https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1690206497/Croma%20Assets/Communication/Headphones%20and%20Earphones/Images/272562_1_pkexam.png?tr=w-360',
+                  src: imgSrc,
+                  width: 250,
+                  height: 360,
+                },
+                largeImage: {
+                  // src: 'https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1690206497/Croma%20Assets/Communication/Headphones%20and%20Earphones/Images/272562_1_pkexam.png?tr=w-360',
+                  src: imgSrc,
+                  width: 1200,
+                  height: 1200,
+                },
+                imageClassName: 'bookcover-image',
+                enlargedImagePosition: 'beside',
+                enlargedImageContainerDimensions: {
+                  width: '315%',
+                  height: '100%',
+                },
+                enlargedImageContainerClassName: 'enlarged-image-container',
+                enlargedImageStyle: {
+                  filter: 'blur(0px) brightness(1)',
+                },
+              }}
+            />
+            <div className="item-details">
+              <h2>{bookName}</h2>
+              <hr />
+              <p>
+                <b>Author:</b>&nbsp;&nbsp;<span>{author}</span>
+              </p>
+              <p className="item-description">
+                <b>Description:</b>&nbsp;&nbsp;<span>{description}</span>
+              </p>
+              <p className="item-rating">
+                <b>Rating:</b>&nbsp;&nbsp;<span>{rating}</span>
+              </p>
+              <h3 className="item-price-details">
+                Rs. {discountedPrice}&nbsp;&nbsp;<del>Rs. {originalPrice}</del>&nbsp;&nbsp;
+                <span className="discount-on-item">({discountPercent}% off)</span>
+              </h3>
+              {outOfStock ? (
+                <p className="out-of-stock-text">Item is currently out of stock</p>
+              ) : (
+                <div className="item-buttons">
+                  <button onClick={addItemToWishlist} className="solid-primary-btn">
+                    Add to wishlist
+                  </button>
+                  <button onClick={addItemToCart} className="solid-warning-btn">
+                    Add to cart
+                  </button>
                 </div>
+              )}
             </div>
+          </div>
         </div>
-    )
+      </>
+    );
 }
 
 export { ProductPage }

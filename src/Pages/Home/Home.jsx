@@ -123,7 +123,7 @@ function Home() {
   const fetchAllCategory = async () => {
     try {
       const res = await Helper(
-        "http://localhost:3004/api/admin/get-all-category",
+        "http://localhost:8002/api/admin/get-all-category",
         "GET"
       );
       if (res && res?.status) {
@@ -138,10 +138,11 @@ function Home() {
   const fetchAllTrendingProduct = async () => {
     try {
       const res = await Helper(
-        "http://localhost:3004/api/admin/get-all-tranding-product",
+        "http://localhost:8002/api/admin/get-all-tranding-product",
         "GET"
       );
       if (res && res?.status) {
+        console.log("fdfdsfsfds",res);
         setTrendingProduct(res?.data);
       } else {
       }
@@ -169,7 +170,7 @@ function Home() {
       <div
         className="genre-cards-container"
         data-aos="fade-up"
-        data-aos-duration="3000"
+        data-aos-duration="2000"
       >
         {category?.map((ele) => {
           return (
@@ -223,7 +224,7 @@ function Home() {
           <Slider {...settings}>
             {trandingProduct?.map((ele) => {
               return (
-                <div style={{ marginTop: "12px" }}>
+                <div style={{ marginTop: '12px' }}>
                   <Link
                     to={`/shop/`}
                     // onClick={() =>
@@ -232,38 +233,28 @@ function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <div
-                      className="card-basic"
-                      style={{ borderRadius: "1rem", padding: "12px" }}
-                    >
-                      <img src={ele?.images} />
+                    <div className="card-basic" style={{ borderRadius: '1rem', padding: '12px' }}>
+                      <img src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1704795585/Croma%20Assets/Communication/Headphones%20and%20Earphones/Images/263445_0_uedz4h.png?tr=w-360" />
                       <div className="card-item-details">
                         <div className="item-title">
                           <h4>{ele?.name}</h4>
                         </div>
-                        <h5 className="item-author">
-                          {ele?.quantity} - &nbsp;Quantity
-                        </h5>
+                        <h5 className="item-author">{ele?.quantity} - &nbsp;Quantity</h5>
                         <p>
                           <b>Rs. {ele?.price} &nbsp;&nbsp;</b>
                           <del>Rs. 500</del> &nbsp;&nbsp;
-                          <span className="discount-on-card">
-                            ({ele?.percentOff}% off)
-                          </span>
+                          <span className="discount-on-card">({ele?.percentOff}% off)</span>
                         </p>
                         <div className="card-button">
                           <button
-                            onClick={(event) => {
+                            onClick={event => {
                               event.preventDefault();
                               event.stopPropagation();
                               // addOrRemoveItemToWishlist();
                             }}
                             className={`card-icon-btn add-to-wishlist-btn outline-card-secondary-btn`}
                           >
-                            <i
-                              className={`fa fa-x fa-heart-o`}
-                              aria-hidden="true"
-                            ></i>
+                            <i className={`fa fa-x fa-heart-o`} aria-hidden="true"></i>
                           </button>
                         </div>
                         <div className="badge-on-card">Deals</div>
@@ -295,7 +286,7 @@ function Home() {
         <Slider {...settings}>
           {trandingProduct?.map((ele) => {
             return (
-              <div style={{ marginTop: "12px" }}>
+              <div style={{ marginTop: '12px' }}>
                 <Link
                   to={`/shop/`}
                   // onClick={() =>
@@ -304,38 +295,28 @@ function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <div
-                    className="card-basic"
-                    style={{ borderRadius: "1rem", padding: "12px" }}
-                  >
-                    <img src={ele?.images} />
+                  <div className="card-basic" style={{ borderRadius: '1rem', padding: '12px' }}>
+                    <img src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1698384810/Croma%20Assets/Entertainment/Wireless%20Earbuds/Images/302477_wo2pp4.png" />
                     <div className="card-item-details">
                       <div className="item-title">
                         <h4>{ele?.name}</h4>
                       </div>
-                      <h5 className="item-author">
-                        {ele?.quantity} - &nbsp;Quantity
-                      </h5>
+                      <h5 className="item-author">{ele?.quantity} - &nbsp;Quantity</h5>
                       <p>
                         <b>Rs. {ele?.price} &nbsp;&nbsp;</b>
                         <del>Rs. 500</del> &nbsp;&nbsp;
-                        <span className="discount-on-card">
-                          ({ele?.percentOff}% off)
-                        </span>
+                        <span className="discount-on-card">({ele?.percentOff}% off)</span>
                       </p>
                       <div className="card-button">
                         <button
-                          onClick={(event) => {
+                          onClick={event => {
                             event.preventDefault();
                             event.stopPropagation();
                             // addOrRemoveItemToWishlist();
                           }}
                           className={`card-icon-btn add-to-wishlist-btn outline-card-secondary-btn`}
                         >
-                          <i
-                            className={`fa fa-x fa-heart-o`}
-                            aria-hidden="true"
-                          ></i>
+                          <i className={`fa fa-x fa-heart-o`} aria-hidden="true"></i>
                         </button>
                       </div>
                       <div className="badge-on-card">Deals</div>
@@ -421,7 +402,7 @@ function Home() {
           <Slider {...settings}>
             {trandingProduct?.map((ele) => {
               return (
-                <div style={{ marginTop: "12px" }}>
+                <div style={{ marginTop: '12px' }}>
                   <Link
                     to={`/shop/`}
                     // onClick={() =>
@@ -430,38 +411,28 @@ function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <div
-                      className="card-basic"
-                      style={{ borderRadius: "1rem", padding: "12px" }}
-                    >
-                      <img src={ele?.images} />
+                    <div className="card-basic" style={{ borderRadius: '1rem', padding: '12px' }}>
+                      <img src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1632902449/Croma%20Assets/Entertainment/Headphones%20and%20Earphones/Images/243163_jlfkhe.png?tr=w-360" />
                       <div className="card-item-details">
                         <div className="item-title">
                           <h4>{ele?.name}</h4>
                         </div>
-                        <h5 className="item-author">
-                          {ele?.quantity} - &nbsp;Quantity
-                        </h5>
+                        <h5 className="item-author">{ele?.quantity} - &nbsp;Quantity</h5>
                         <p>
                           <b>Rs. {ele?.price} &nbsp;&nbsp;</b>
                           <del>Rs. 500</del> &nbsp;&nbsp;
-                          <span className="discount-on-card">
-                            ({ele?.percentOff}% off)
-                          </span>
+                          <span className="discount-on-card">({ele?.percentOff}% off)</span>
                         </p>
                         <div className="card-button">
                           <button
-                            onClick={(event) => {
+                            onClick={event => {
                               event.preventDefault();
                               event.stopPropagation();
                               // addOrRemoveItemToWishlist();
                             }}
                             className={`card-icon-btn add-to-wishlist-btn outline-card-secondary-btn`}
                           >
-                            <i
-                              className={`fa fa-x fa-heart-o`}
-                              aria-hidden="true"
-                            ></i>
+                            <i className={`fa fa-x fa-heart-o`} aria-hidden="true"></i>
                           </button>
                         </div>
                         <div className="badge-on-card">Deals</div>
@@ -493,7 +464,7 @@ function Home() {
         <Slider {...settings}>
           {trandingProduct?.map((ele) => {
             return (
-              <div style={{ marginTop: "12px" }}>
+              <div style={{ marginTop: '12px' }}>
                 <Link
                   to={`/shop/`}
                   // onClick={() =>
@@ -502,38 +473,28 @@ function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <div
-                    className="card-basic"
-                    style={{ borderRadius: "1rem", padding: "12px" }}
-                  >
-                    <img src={ele?.images} />
+                  <div className="card-basic" style={{ borderRadius: '1rem', padding: '12px' }}>
+                    <img src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1697016359/Croma%20Assets/Entertainment/Wireless%20Earbuds/Images/300117_0_rlzacv.png?tr=w-400" />
                     <div className="card-item-details">
                       <div className="item-title">
                         <h4>{ele?.name}</h4>
                       </div>
-                      <h5 className="item-author">
-                        {ele?.quantity} - &nbsp;Quantity
-                      </h5>
+                      <h5 className="item-author">{ele?.quantity} - &nbsp;Quantity</h5>
                       <p>
                         <b>Rs. {ele?.price} &nbsp;&nbsp;</b>
                         <del>Rs. 500</del> &nbsp;&nbsp;
-                        <span className="discount-on-card">
-                          ({ele?.percentOff}% off)
-                        </span>
+                        <span className="discount-on-card">({ele?.percentOff}% off)</span>
                       </p>
                       <div className="card-button">
                         <button
-                          onClick={(event) => {
+                          onClick={event => {
                             event.preventDefault();
                             event.stopPropagation();
                             // addOrRemoveItemToWishlist();
                           }}
                           className={`card-icon-btn add-to-wishlist-btn outline-card-secondary-btn`}
                         >
-                          <i
-                            className={`fa fa-x fa-heart-o`}
-                            aria-hidden="true"
-                          ></i>
+                          <i className={`fa fa-x fa-heart-o`} aria-hidden="true"></i>
                         </button>
                       </div>
                       <div className="badge-on-card">Deals</div>
