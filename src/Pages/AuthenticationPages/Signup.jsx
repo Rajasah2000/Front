@@ -44,11 +44,23 @@ function Signup()
     //     })
     // }
 
-    const signupUser = (event) => {
+    const signupUser = async(event) => {
       
       event.preventDefault();
       if(newUserName && newUserEmail && newUserPassword && mobile){
-        
+        let data = {
+          
+        }
+         try {
+      const res = await Helper('http://localhost:3004/api/admin/register', 'POST' ,);
+      if (res && res?.status) {
+        console.log("fdfdsfsfds",res);
+        setTrendingProduct(res?.data);
+      } else {
+      }
+    } catch (error) {
+      console.log("err", error);
+    }
       }else{
         showToast('error', '', 'All Fields are required!');
       }
