@@ -123,7 +123,7 @@ function Home() {
   const fetchAllCategory = async () => {
     try {
       const res = await Helper(
-        "http://localhost:8002/api/admin/get-all-category",
+        "http://localhost:3004/api/admin/get-all-category",
         "GET"
       );
       if (res && res?.status) {
@@ -138,7 +138,7 @@ function Home() {
   const fetchAllTrendingProduct = async () => {
     try {
       const res = await Helper(
-        "http://localhost:8002/api/admin/get-all-tranding-product",
+        "http://localhost:3004/api/admin/get-all-tranding-product",
         "GET"
       );
       if (res && res?.status) {
