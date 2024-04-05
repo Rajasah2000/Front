@@ -3,6 +3,7 @@ import "./UserAuth.css"
 import { Link, useNavigate } from "react-router-dom"
 import axios from "axios"
 import { useToast } from "../../Context/toast-context"
+import Helper from "../../AuthService/Helper"
 
 function Signup()
 {
@@ -30,9 +31,9 @@ function Signup()
     //     .then(res => {
     //         if(res.data.status==='ok')
     //         {
-    //             //User created successfully, navigate to Login Page
-    //             showToast("success","","New user created successfully")
-    //             navigate('/login')
+                // //User created successfully, navigate to Login Page
+                // showToast("success","","New user created successfully")
+                // navigate('/login')
     //         }
     //         else
     //         {
@@ -49,14 +50,25 @@ function Signup()
       event.preventDefault();
       if(newUserName && newUserEmail && newUserPassword && mobile){
         let data = {
-          
-        }
+          firstname: newUserName,
+          lastname: 'a',
+          email: newUserEmail,
+          password: newUserPassword,
+          mobile: mobile,
+          role: 'user',
+        };
          try {
-      const res = await Helper('http://localhost:3004/api/admin/register', 'POST' ,);
+      const res = await Helper('http://localhost:3004/api/admin/register', 'POST' ,data);
       if (res && res?.status) {
-        console.log("fdfdsfsfds",res);
-        setTrendingProduct(res?.data);
+        //User created successfully, navigate to Login Page
+        setMobileNumber("");
+        setNewUserEmail("");
+        setNewUserName("");
+        setNewUserPassword("");
+        showToast('success', '', 'New user created successfully');
+        navigate('/login');
       } else {
+        showToast('error', '', res?.msg);
       }
     } catch (error) {
       console.log("err", error);

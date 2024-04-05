@@ -18,6 +18,7 @@ import {
   useWishlist,
   useCart
 } from "./index"
+import PrivateRoute from './Pages/PrivateRoute/PrivateRoute';
 
 const App = ()=> {
 
@@ -36,18 +37,23 @@ const App = ()=> {
   return (
     <Router>
       <div className="App">
-       <Navbar/>
+        <Navbar />
         <Routes>
-          <Route path="/"         exact element={<Home/>} />
-          <Route path="/shop"     exact element={<Shop/>} />
-          <Route path="/shop/:id"       element={<ProductPage/>} />
-          <Route path="/login"          element={<Login/>} />
-          <Route path="/signup"         element={<Signup/>} />
-          <Route path="/wishlist"       element={<Wishlist/>} />
-          <Route path="/cart"           element={<Cart/>} />
-          <Route path="/orders"         element={<Orders/>} />
+          
+          <Route element={<PrivateRoute />}>
+            <Route path="/shop" exact element={<Shop />} />
+            <Route path="/shop/:id" element={<ProductPage />} />
+            <Route path="/wishlist" element={<Wishlist />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/orders" element={<Orders />} />
+          </Route>
+
+          <Route path="/" exact element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+
         </Routes>
-        <Toast position="bottom-right"/>
+        <Toast position="bottom-right" />
       </div>
     </Router>
   );
